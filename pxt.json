@@ -1,0 +1,9 @@
+{
+  "name": "cutscene-master",
+  "description": "MakeCode Arcade cutscene tools: camera pan, text, and events!",
+  "dependencies": {},
+  "files": [
+    "main.ts",
+    "README.md"
+  ]
+}
