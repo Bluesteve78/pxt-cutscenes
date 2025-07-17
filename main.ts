@@ -1,6 +1,6 @@
 //% color=#AA00FF icon="\uf03e" block="Cutscene"
 namespace cutscene {
-    
+
     //% block="type text $text with delay $delay ms" blockGap=8
     export function typeText(text: string, delay: number) {
         let current = ""
@@ -28,7 +28,7 @@ namespace cutscene {
         if (freeze) {
             controller.moveSprite(null)
         } else {
-            // You'll need to re-assign sprite manually outside
+            // Restore control manually
         }
     }
 
@@ -42,4 +42,4 @@ namespace cutscene {
         sprite.say(text, 2000)
     }
 }
-}
+
