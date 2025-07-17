@@ -1,27 +1,58 @@
-// Cutscene namespace
 namespace cutscene {
-    // Say text with typing effect
-    // duration: milliseconds for each character
-    export function typeText(text: string, duration: number): void {}
+    let playerWasFrozen = false
 
-    // Move camera to location over time
-    export function panCameraTo(x: number, y: number, duration: number): void {}
+    export function typeText(text: string, delay: number) {
+        let current = ""
+        for (let i = 0; i < text.length; i++) {
+            current += text.charAt(i)
+            game.showLongText(current, DialogLayout.Bottom)
+            pause(delay)
+        }
+    }
 
-    // Focus camera on a sprite
-    export function focusOn(sprite: Sprite, duration: number): void {}
+    export function panCameraTo(x: number, y: number, duration: number) {
+        const startX = scene.cameraProperty(CameraProperty.X)
+        const startY = scene.cameraProperty(CameraProperty.Y)
+        const steps = 30
+        for (let i = 0; i <= steps; i++) {
+            const t = i / steps
+            scene.centerCameraAt(
+                startX + (x - startX) * t,
+                startY + (y - startY) * t
+            )
+            pause(duration / steps)
+        }
+    }
 
-    // Freeze/unfreeze all player controls
-    export function freezePlayer(freeze: boolean): void {}
+    export function focusOn(sprite: Sprite, duration: number) {
+        const steps = 30
+        for (let i = 0; i <= steps; i++) {
+            scene.centerCameraAt(sprite.x, sprite.y)
+            pause(duration / steps)
+        }
+    }
 
-    // Wait/pause cutscene
-    export function wait(ms: number): void {}
+    export function freezePlayer(freeze: boolean) {
+        playerWasFrozen = freeze
+        controller.moveSprite(null)
+    }
 
-    // Run action (e.g., make a sprite talk)
-    export function spriteSay(sprite: Sprite, text: string): void {}
+    export function wait(ms: number) {
+        pause(ms)
+    }
 
-    // Play music or sound
-    export function playSound(name: string): void {}
+    export function spriteSay(sprite: Sprite, text: string) {
+        sprite.say(text, 2000)
+    }
 
-    // Run multiple cutscene steps in order
-    export function runSequence(steps: () => void[]): void {}
+    export function playSound(name: string) {
+        // Replace this with a real sound later
+        music.playTone(Note.C, 500)
+    }
+
+    export function runSequence(steps: () => void[]): void {
+        for (let step of steps()) {
+            step
+        }
+    }
 }
