@@ -41,5 +41,4 @@ namespace cutscene {
     export function spriteSay(sprite: Sprite, text: string) {
         sprite.say(text, 2000)
     }
-}
 
