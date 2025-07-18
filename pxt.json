@@ -1,9 +1,16 @@
 {
-  "name": "cutscene-master",
-  "description": "MakeCode Arcade cutscene tools: camera pan, text, and events!",
-  "dependencies": {},
+  "name": "cutscene",
+  "description": "Cutscene tools for MakeCode Arcade",
+  "dependencies": {
+    "device": "*"
+  },
   "files": [
-    "main.ts",
-    "README.md"
-  ]
+    "main.ts"
+  ],
+  "targetVersions": {
+    "branch": "v1.10.27",
+    "tag": "v1.10.27",
+    "target": "arcade"
+    "public": "True"
+  }
 }
