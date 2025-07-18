@@ -1,5 +1,5 @@
 {
-  "name": "cutscene",
+  "name": "cutscenes",
   "description": "Cutscene tools for MakeCode Arcade",
   "dependencies": {
     "device": "*"
